@@ -12,6 +12,13 @@
 		F12120D621AE924F0013046F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F12120D421AE924F0013046F /* Main.storyboard */; };
 		F12120D821AE92500013046F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F12120D721AE92500013046F /* Assets.xcassets */; };
 		F12120DB21AE92500013046F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F12120D921AE92500013046F /* LaunchScreen.storyboard */; };
+		F12120F621AE93F50013046F /* RunloopTools.m in Sources */ = {isa = PBXBuildFile; fileRef = F12120E521AE93F40013046F /* RunloopTools.m */; };
+		F12120F721AE93F50013046F /* ZipTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12120E821AE93F40013046F /* ZipTool.swift */; };
+		F12120F821AE93F50013046F /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = F12120EB21AE93F50013046F /* unzip.c */; };
+		F12120F921AE93F50013046F /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = F12120EC21AE93F50013046F /* zip.c */; };
+		F12120FA21AE93F50013046F /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = F12120ED21AE93F50013046F /* ioapi.c */; };
+		F12120FB21AE93F50013046F /* mztools.c in Sources */ = {isa = PBXBuildFile; fileRef = F12120EE21AE93F50013046F /* mztools.c */; };
+		F12120FC21AE93F50013046F /* SSZipArchive.m in Sources */ = {isa = PBXBuildFile; fileRef = F12120F521AE93F50013046F /* SSZipArchive.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +29,21 @@
 		F12120D721AE92500013046F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F12120DA21AE92500013046F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F12120DC21AE92500013046F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F12120E421AE93F40013046F /* RunloopTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RunloopTools.h; sourceTree = "<group>"; };
+		F12120E521AE93F40013046F /* RunloopTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RunloopTools.m; sourceTree = "<group>"; };
+		F12120E721AE93F40013046F /* MFObjectBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFObjectBridge.h; sourceTree = "<group>"; };
+		F12120E821AE93F40013046F /* ZipTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZipTool.swift; sourceTree = "<group>"; };
+		F12120EB21AE93F50013046F /* unzip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = unzip.c; sourceTree = "<group>"; };
+		F12120EC21AE93F50013046F /* zip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = zip.c; sourceTree = "<group>"; };
+		F12120ED21AE93F50013046F /* ioapi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ioapi.c; sourceTree = "<group>"; };
+		F12120EE21AE93F50013046F /* mztools.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mztools.c; sourceTree = "<group>"; };
+		F12120EF21AE93F50013046F /* crypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crypt.h; sourceTree = "<group>"; };
+		F12120F021AE93F50013046F /* zip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zip.h; sourceTree = "<group>"; };
+		F12120F121AE93F50013046F /* unzip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = unzip.h; sourceTree = "<group>"; };
+		F12120F221AE93F50013046F /* mztools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mztools.h; sourceTree = "<group>"; };
+		F12120F321AE93F50013046F /* ioapi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ioapi.h; sourceTree = "<group>"; };
+		F12120F421AE93F50013046F /* SSZipArchive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSZipArchive.h; sourceTree = "<group>"; };
+		F12120F521AE93F50013046F /* SSZipArchive.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSZipArchive.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +77,9 @@
 		F12120CF21AE924F0013046F /* MFWebLottie */ = {
 			isa = PBXGroup;
 			children = (
+				F12120E621AE93F40013046F /* Controller */,
+				F12120E921AE93F50013046F /* SSZipArchive */,
+				F12120E321AE93F40013046F /* TaskQueue */,
 			);
 			path = MFWebLottie;
 			sourceTree = "<group>";
@@ -70,6 +95,50 @@
 				F12120DC21AE92500013046F /* Info.plist */,
 			);
 			path = MFWebLottie_Demo;
+			sourceTree = "<group>";
+		};
+		F12120E321AE93F40013046F /* TaskQueue */ = {
+			isa = PBXGroup;
+			children = (
+				F12120E421AE93F40013046F /* RunloopTools.h */,
+				F12120E521AE93F40013046F /* RunloopTools.m */,
+			);
+			path = TaskQueue;
+			sourceTree = "<group>";
+		};
+		F12120E621AE93F40013046F /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				F12120E721AE93F40013046F /* MFObjectBridge.h */,
+				F12120E821AE93F40013046F /* ZipTool.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		F12120E921AE93F50013046F /* SSZipArchive */ = {
+			isa = PBXGroup;
+			children = (
+				F12120EA21AE93F50013046F /* minizip */,
+				F12120F421AE93F50013046F /* SSZipArchive.h */,
+				F12120F521AE93F50013046F /* SSZipArchive.m */,
+			);
+			path = SSZipArchive;
+			sourceTree = "<group>";
+		};
+		F12120EA21AE93F50013046F /* minizip */ = {
+			isa = PBXGroup;
+			children = (
+				F12120EB21AE93F50013046F /* unzip.c */,
+				F12120EC21AE93F50013046F /* zip.c */,
+				F12120ED21AE93F50013046F /* ioapi.c */,
+				F12120EE21AE93F50013046F /* mztools.c */,
+				F12120EF21AE93F50013046F /* crypt.h */,
+				F12120F021AE93F50013046F /* zip.h */,
+				F12120F121AE93F50013046F /* unzip.h */,
+				F12120F221AE93F50013046F /* mztools.h */,
+				F12120F321AE93F50013046F /* ioapi.h */,
+			);
+			path = minizip;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -143,8 +212,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F12120F621AE93F50013046F /* RunloopTools.m in Sources */,
+				F12120F821AE93F50013046F /* unzip.c in Sources */,
+				F12120FC21AE93F50013046F /* SSZipArchive.m in Sources */,
+				F12120FB21AE93F50013046F /* mztools.c in Sources */,
+				F12120F721AE93F50013046F /* ZipTool.swift in Sources */,
+				F12120F921AE93F50013046F /* zip.c in Sources */,
 				F12120D321AE924F0013046F /* ViewController.swift in Sources */,
 				F12120D121AE924F0013046F /* AppDelegate.swift in Sources */,
+				F12120FA21AE93F50013046F /* ioapi.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
