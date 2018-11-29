@@ -81,6 +81,8 @@
 		F12121CF21AFB8820013046F /* LOTLayerContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = F121217D21AFB8820013046F /* LOTLayerContainer.m */; };
 		F12121D021AFB8820013046F /* LOTCompositionContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = F121218121AFB8820013046F /* LOTCompositionContainer.m */; };
 		F12121D121AFB8820013046F /* LOTMaskContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = F121218221AFB8820013046F /* LOTMaskContainer.m */; };
+		F12121D421AFBA5E0013046F /* MFDownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12121D321AFBA5E0013046F /* MFDownloadManager.swift */; };
+		F12121D621AFD0530013046F /* MFWebLOTAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12121D521AFD0530013046F /* MFWebLOTAnimationView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -236,6 +238,8 @@
 		F121218F21AFB8820013046F /* LOTAnimationView_Compat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LOTAnimationView_Compat.h; sourceTree = "<group>"; };
 		F121219021AFB8820013046F /* LOTValueCallback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LOTValueCallback.h; sourceTree = "<group>"; };
 		F121219121AFB8820013046F /* LOTBlockCallback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LOTBlockCallback.h; sourceTree = "<group>"; };
+		F12121D321AFBA5E0013046F /* MFDownloadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MFDownloadManager.swift; sourceTree = "<group>"; };
+		F12121D521AFD0530013046F /* MFWebLOTAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MFWebLOTAnimationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -304,7 +308,9 @@
 			children = (
 				F12120E721AE93F40013046F /* MFObjectBridge.h */,
 				F12120E821AE93F40013046F /* ZipTool.swift */,
+				F12121D321AFBA5E0013046F /* MFDownloadManager.swift */,
 				F121210021AF921B0013046F /* MFCacheManager.swift */,
+				F12121D521AFD0530013046F /* MFWebLOTAnimationView.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -670,6 +676,7 @@
 				F12121BC21AFB8820013046F /* LOTShapeTransform.m in Sources */,
 				F12121B721AFB8820013046F /* LOTShapeRectangle.m in Sources */,
 				F12120F921AE93F50013046F /* zip.c in Sources */,
+				F12121D421AFBA5E0013046F /* MFDownloadManager.swift in Sources */,
 				F12121AC21AFB8820013046F /* CALayer+Compat.m in Sources */,
 				F12121AF21AFB8820013046F /* LOTLayer.m in Sources */,
 				F121219821AFB8820013046F /* LOTSizeInterpolator.m in Sources */,
@@ -717,6 +724,7 @@
 				F121219B21AFB8820013046F /* LOTTransformInterpolator.m in Sources */,
 				F12121B821AFB8820013046F /* LOTShapeCircle.m in Sources */,
 				F12121C321AFB8820013046F /* LOTComposition.m in Sources */,
+				F12121D621AFD0530013046F /* MFWebLOTAnimationView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -871,7 +879,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = MFWebLottie.MFWebLottie;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = MFWebLottie/Controller/MFObjectBridge.h;
+				SWIFT_OBJC_BRIDGING_HEADER = MFWebLottie/Manager/MFObjectBridge.h;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -890,7 +898,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = MFWebLottie.MFWebLottie;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = MFWebLottie/Controller/MFObjectBridge.h;
+				SWIFT_OBJC_BRIDGING_HEADER = MFWebLottie/Manager/MFObjectBridge.h;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

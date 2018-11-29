@@ -14,7 +14,7 @@ class MFCacheManager: NSObject {
 
     static let shared = MFCacheManager()
     
-    var cacheInfo: [String: Bool] = [String: Bool]()
+    var cacheInfo: [String: String] = [String: String]()
    
     // 重载并私有
     private override init() {
@@ -25,30 +25,57 @@ class MFCacheManager: NSObject {
     
     ///加载缓存信息
     private func loadCacheInfo(){
-        guard let localInfo = NSDictionary.init(contentsOfFile: mfCacheInfoPath) as? [String: Bool] else{
+        guard let localInfo = NSDictionary.init(contentsOfFile: mfCacheInfoPath) as? [String: String] else{
             return
         }
         self.cacheInfo = localInfo
     }
 
-    /// 更新缓存信息
-    ///
-    /// - Parameters:
-    ///   - key: 压缩文件的MD5
-    ///   - hasUnzip: 是否已经解压
-    func updateCacheInfo(key:String, hasZip:Bool){
-        self.cacheInfo = [key : hasZip]
-        NSDictionary.init(dictionary: self.cacheInfo).write(toFile: mfCacheInfoPath, atomically: true)
-    }
     
     
     /// 判断是否有缓存
     ///
     /// - Parameter key: 压缩文件的MD5
     /// - Returns: 是否存在
-    func isExistInCache(key:String) -> Bool{
-        return self.cacheInfo[key] ?? false
+    func isExistInCache(fileName: String,
+                        md5: String) -> Bool{
+        let oldMD5 = self.cacheInfo[fileName] ?? "NotFound"
+        if oldMD5 != "NotFound"{
+            if oldMD5 != md5{
+                return false
+            }else{
+                return true
+            }
+        }else{
+            return false
+        }
     }
+    
+    
+    /// 更新缓存信息
+    ///
+    /// - Parameters:
+    ///   - key: 压缩文件的MD5
+    ///   - hasUnzip: 是否已经解压
+    func updateCacheInfo(fileName: String,
+                         md5: String){
+        self.cacheInfo = [fileName : md5]
+        NSDictionary.init(dictionary: self.cacheInfo).write(toFile: mfCacheInfoPath, atomically: true)
+    }
+    
+    
+    /// 获取已经缓存的json路径
+    ///
+    /// - Parameter fileName: json名
+    /// - Returns: json路径
+    func getCachePath(fileName:String) -> String{
+        if (self.cacheInfo[fileName] ?? "NotFound") != "NotFound"{
+            return mfUnZipPath + "/\(fileName)" + "/\(fileName).json"
+        }else{
+            return "NotFound"
+        }
+    }
+    
     
     
     /// 遍历resource目录,返回缓存大小单位:M

@@ -12,12 +12,17 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-            ZipTool().unZipFile(zipFileName: "zucistar_data")
-        }
+        aview.frame = CGRect.init(x: 0, y: 0, width: 375, height: 200)
+        self.view.addSubview(aview)
+    }
     
-    
-    
-    
+    lazy var aview:MFWebLOTAnimationView = {
+       let view = MFWebLOTAnimationView.init(fileName: "zucistar_data",
+                                             MFWebLottieRefreshCached: true)
+        view.play()
+        view.loopAnimation = true
+        return view
+    }()
     
 }
 
