@@ -11,4 +11,6 @@
 
 #import "RunloopTools.h"
 #import "SSZipArchive.h"
+#import "LOTAnimationView.h"
+
 #endif /* MFObjectBridge_h */
