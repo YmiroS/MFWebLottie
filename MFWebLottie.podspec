@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'MFWebLottie'
-  s.version          = '1.0.0'
+  s.version          = '1.0.1'
   s.summary          = 'Load the network resources of Lottie'
 
 # This description is used to generate tags and improve search results.
@@ -23,8 +23,6 @@ Load the network resources of Lottie. Cache
   s.requires_arc = true # 是否启用ARC 
   s.platform = :ios, "9.0" #平台及支持的最低版本 # 
   s.frameworks = "UIKit","Foundation" #支持的框架 # 
-  s.dependency "lottie-ios" # 依赖库 #
-  
 
   # s.resource_bundles = {
   #   'MFWebLottie' => ['MFWebLottie/Assets/*.png']
