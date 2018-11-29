@@ -270,7 +270,7 @@
 			isa = PBXGroup;
 			children = (
 				F121210221AFB8820013046F /* lottie-ios */,
-				F12120E621AE93F40013046F /* Controller */,
+				F12120E621AE93F40013046F /* Manager */,
 				F12120E921AE93F50013046F /* SSZipArchive */,
 				F12120E321AE93F40013046F /* TaskQueue */,
 			);
@@ -299,14 +299,14 @@
 			path = TaskQueue;
 			sourceTree = "<group>";
 		};
-		F12120E621AE93F40013046F /* Controller */ = {
+		F12120E621AE93F40013046F /* Manager */ = {
 			isa = PBXGroup;
 			children = (
 				F12120E721AE93F40013046F /* MFObjectBridge.h */,
 				F12120E821AE93F40013046F /* ZipTool.swift */,
 				F121210021AF921B0013046F /* MFCacheManager.swift */,
 			);
-			path = Controller;
+			path = Manager;
 			sourceTree = "<group>";
 		};
 		F12120E921AE93F50013046F /* SSZipArchive */ = {
