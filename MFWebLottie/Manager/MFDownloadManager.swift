@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MFDownloadManager: NSObject, URLSessionDownloadDelegate {
+open class MFDownloadManager: NSObject, URLSessionDownloadDelegate {
     
     static let shared:MFDownloadManager = {
         let instance = MFDownloadManager()
@@ -82,7 +82,7 @@ class MFDownloadManager: NSObject, URLSessionDownloadDelegate {
 
 extension MFDownloadManager{
     ///下载结果
-    func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
+    public func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
         //拼接一个存放的路径   suggestedFilename是该文件在服务器里面的文件名，建议客户端和的文件名跟服务器的一样
         guard let fileName = downloadTask.response?.suggestedFilename else{
             failedCallBack?("下载失败")

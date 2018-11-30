@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MFWebLOTAnimationView: UIView, ZipToolDelegate{
+open class MFWebLOTAnimationView: UIView, ZipToolDelegate{
    
     //MARK: - property
     fileprivate var currentResourceMD5:String = ""
@@ -51,7 +51,7 @@ class MFWebLOTAnimationView: UIView, ZipToolDelegate{
     /// - Parameters:
     ///   - fileName: 文件名
     ///   - MFWebLottieRefreshCached: 是否需要Url不变的情况下，更新图片内容
-    init(fileName:String, MFWebLottieRefreshCached:Bool){
+    public init(fileName:String, MFWebLottieRefreshCached:Bool){
         super.init(frame: CGRect.zero)
         
         if MFWebLottieRefreshCached{
@@ -126,11 +126,11 @@ class MFWebLOTAnimationView: UIView, ZipToolDelegate{
     }
     
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
+    override open func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
         return isThrough
     }
     
@@ -146,7 +146,7 @@ class MFWebLOTAnimationView: UIView, ZipToolDelegate{
         addSubview(animationView)
     }
     
-    override func layoutSubviews() {
+    override open func layoutSubviews() {
         animationView?.frame = self.bounds
     }
     
