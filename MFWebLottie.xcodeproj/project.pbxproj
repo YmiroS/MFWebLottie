@@ -13,7 +13,7 @@
 		F12120D821AE92500013046F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F12120D721AE92500013046F /* Assets.xcassets */; };
 		F12120DB21AE92500013046F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F12120D921AE92500013046F /* LaunchScreen.storyboard */; };
 		F12120F621AE93F50013046F /* RunloopTools.m in Sources */ = {isa = PBXBuildFile; fileRef = F12120E521AE93F40013046F /* RunloopTools.m */; };
-		F12120F721AE93F50013046F /* ZipTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12120E821AE93F40013046F /* ZipTool.swift */; };
+		F12120F721AE93F50013046F /* MFZipManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12120E821AE93F40013046F /* MFZipManager.swift */; };
 		F12120F821AE93F50013046F /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = F12120EB21AE93F50013046F /* unzip.c */; };
 		F12120F921AE93F50013046F /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = F12120EC21AE93F50013046F /* zip.c */; };
 		F12120FA21AE93F50013046F /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = F12120ED21AE93F50013046F /* ioapi.c */; };
@@ -83,6 +83,7 @@
 		F12121D121AFB8820013046F /* LOTMaskContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = F121218221AFB8820013046F /* LOTMaskContainer.m */; };
 		F12121D421AFBA5E0013046F /* MFDownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12121D321AFBA5E0013046F /* MFDownloadManager.swift */; };
 		F12121D621AFD0530013046F /* MFWebLOTAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12121D521AFD0530013046F /* MFWebLOTAnimationView.swift */; };
+		F12DC12121B10C12009EB69A /* MFWebLottieManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12DC12021B10C12009EB69A /* MFWebLottieManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -96,7 +97,7 @@
 		F12120E421AE93F40013046F /* RunloopTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RunloopTools.h; sourceTree = "<group>"; };
 		F12120E521AE93F40013046F /* RunloopTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RunloopTools.m; sourceTree = "<group>"; };
 		F12120E721AE93F40013046F /* MFObjectBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFObjectBridge.h; sourceTree = "<group>"; };
-		F12120E821AE93F40013046F /* ZipTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZipTool.swift; sourceTree = "<group>"; };
+		F12120E821AE93F40013046F /* MFZipManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MFZipManager.swift; sourceTree = "<group>"; };
 		F12120EB21AE93F50013046F /* unzip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = unzip.c; sourceTree = "<group>"; };
 		F12120EC21AE93F50013046F /* zip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = zip.c; sourceTree = "<group>"; };
 		F12120ED21AE93F50013046F /* ioapi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ioapi.c; sourceTree = "<group>"; };
@@ -240,6 +241,7 @@
 		F121219121AFB8820013046F /* LOTBlockCallback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LOTBlockCallback.h; sourceTree = "<group>"; };
 		F12121D321AFBA5E0013046F /* MFDownloadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MFDownloadManager.swift; sourceTree = "<group>"; };
 		F12121D521AFD0530013046F /* MFWebLOTAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MFWebLOTAnimationView.swift; sourceTree = "<group>"; };
+		F12DC12021B10C12009EB69A /* MFWebLottieManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MFWebLottieManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -307,10 +309,11 @@
 			isa = PBXGroup;
 			children = (
 				F12120E721AE93F40013046F /* MFObjectBridge.h */,
-				F12120E821AE93F40013046F /* ZipTool.swift */,
-				F12121D321AFBA5E0013046F /* MFDownloadManager.swift */,
-				F121210021AF921B0013046F /* MFCacheManager.swift */,
+				F12DC12021B10C12009EB69A /* MFWebLottieManager.swift */,
 				F12121D521AFD0530013046F /* MFWebLOTAnimationView.swift */,
+				F12121D321AFBA5E0013046F /* MFDownloadManager.swift */,
+				F12120E821AE93F40013046F /* MFZipManager.swift */,
+				F121210021AF921B0013046F /* MFCacheManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -560,8 +563,9 @@
 				F121219C21AFB8820013046F /* LOTArrayInterpolator.m in Sources */,
 				F121219621AFB8820013046F /* LOTColorInterpolator.m in Sources */,
 				F12121C121AFB8820013046F /* UIColor+Expanded.m in Sources */,
-				F12120F721AE93F50013046F /* ZipTool.swift in Sources */,
+				F12120F721AE93F50013046F /* MFZipManager.swift in Sources */,
 				F12121BC21AFB8820013046F /* LOTShapeTransform.m in Sources */,
+				F12DC12121B10C12009EB69A /* MFWebLottieManager.swift in Sources */,
 				F12121B721AFB8820013046F /* LOTShapeRectangle.m in Sources */,
 				F12120F921AE93F50013046F /* zip.c in Sources */,
 				F12121D421AFBA5E0013046F /* MFDownloadManager.swift in Sources */,

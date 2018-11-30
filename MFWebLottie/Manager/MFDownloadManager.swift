@@ -8,7 +8,7 @@
 
 import UIKit
 
-open class MFDownloadManager: NSObject, URLSessionDownloadDelegate {
+class MFDownloadManager: NSObject, URLSessionDownloadDelegate {
     
     static let shared:MFDownloadManager = {
         let instance = MFDownloadManager()

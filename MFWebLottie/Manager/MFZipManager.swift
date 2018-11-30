@@ -12,7 +12,7 @@ let mfResourceRootPath = NSMutableString.init(string: NSHomeDirectory()).appendi
 let mfUnZipPath = mfResourceRootPath +  "/LottieUnzipResource"
 let mfDownloadFilePath = mfResourceRootPath +  "/LottieDownloadResource"
 
-@objc protocol ZipToolDelegate {
+@objc protocol MFZipToolDelegate {
     @objc optional func unZipWillStart()
     @objc optional func unZipSuccess(fileName:String)
     @objc optional func unZipFailed()
@@ -20,13 +20,13 @@ let mfDownloadFilePath = mfResourceRootPath +  "/LottieDownloadResource"
     @objc optional func haveExisted()
 }
 
-class ZipTool: NSObject, SSZipArchiveDelegate {
+class MFZipManager: NSObject, SSZipArchiveDelegate {
     
     var unZipFileStatus: Bool?
     
     var unZipFileName: String?
     
-    weak var delegate:ZipToolDelegate?
+    weak var delegate:MFZipToolDelegate?
     
     override init() {
         super.init()
@@ -61,7 +61,7 @@ class ZipTool: NSObject, SSZipArchiveDelegate {
     }
 }
 
-extension ZipTool {
+extension MFZipManager {
     
     ///进度
     func zipArchiveProgressEvent(_ loaded: Int, total: Int) {

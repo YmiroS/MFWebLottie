@@ -18,7 +18,7 @@ class ViewController: UIViewController {
     
     lazy var aview:MFWebLOTAnimationView = {
        let view = MFWebLOTAnimationView.init(fileName: "zucistar_data",
-                                             MFWebLottieRefreshCached: true)
+                                             mfWebLottieRefreshCached: true)
         view.play()
         view.loopAnimation = true
         return view

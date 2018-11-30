@@ -10,7 +10,7 @@ import UIKit
 
 let mfCacheInfoPath = mfResourceRootPath + "/cacheInfo.plist"
 
-open class MFCacheManager: NSObject {
+class MFCacheManager: NSObject {
 
     static let shared = MFCacheManager()
     

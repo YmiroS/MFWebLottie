@@ -8,8 +8,8 @@
 
 import UIKit
 
-open class MFWebLOTAnimationView: UIView, ZipToolDelegate{
-   
+open class MFWebLOTAnimationView: UIView, MFZipToolDelegate{
+    
     //MARK: - property
     fileprivate var currentResourceMD5:String = ""
     
@@ -39,7 +39,7 @@ open class MFWebLOTAnimationView: UIView, ZipToolDelegate{
             isPlay ? play() : stop()
         }
     }
-
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.isUserInteractionEnabled = true
@@ -51,36 +51,29 @@ open class MFWebLOTAnimationView: UIView, ZipToolDelegate{
     /// - Parameters:
     ///   - fileName: 文件名
     ///   - MFWebLottieRefreshCached: 是否需要Url不变的情况下，更新图片内容
-    public init(fileName:String, MFWebLottieRefreshCached:Bool){
+    public init(fileName:String, mfWebLottieRefreshCached:Bool){
         super.init(frame: CGRect.zero)
-        
-        if MFWebLottieRefreshCached{
-            MFDownloadManager.shared.checkResourceIsUpdate(fileName: fileName) { (md5) in
-                self.currentResourceMD5 = md5
-                if !MFCacheManager.shared.isExistInCache(fileName: fileName, md5: md5){
-                    ///需要下载
-                    MFDownloadManager.shared.downloadResource(fileName: fileName, downloadFinishCallBack: {[weak self] in
-                        self?.zipTool.unZipFile(zipFileName: fileName)
-                    })
-                }
-            }
+        var starDownload:Bool = false
+        ///在Bundle内
+        if let _ = Bundle.main.path(forResource: fileName, ofType: "json"){
+            self.animationView = LOTAnimationView.init(name: fileName)
+            return
+        }
+        if MFCacheManager.shared.getCachePath(fileName: fileName) != "NotFound"{
+            ///在硬盘内
+            let filePath = MFCacheManager.shared.getCachePath(fileName: fileName)
+            self.animationView = LOTAnimationView.init(filePath: filePath)
         }else{
-            ///在Bundle内
-            if let _ = Bundle.main.path(forResource: fileName, ofType: "json"){
-                self.animationView = LOTAnimationView.init(name: fileName)
-                return
-            }
-            if MFCacheManager.shared.getCachePath(fileName: fileName) != "NotFound"{
-                ///在硬盘内
-                self.animationView = LOTAnimationView.init(filePath: MFCacheManager.shared.getCachePath(fileName: fileName))
-            }else{
-                ///需要下载
-                MFDownloadManager.shared.downloadResource(fileName: fileName, downloadFinishCallBack: {[weak self] in
-                    self?.zipTool.unZipFile(zipFileName: fileName)
-                })
-            }
+            ///需要下载
+            MFDownloadManager.shared.downloadResource(fileName: fileName, downloadFinishCallBack: {[weak self] in
+                self?.zipTool.unZipFile(zipFileName: fileName)
+            })
+            starDownload = true
         }
         setup()
+        if !starDownload{
+            self.refreshCachedOperation(fileName: fileName, mfWebLottieRefreshCached: mfWebLottieRefreshCached)
+        }
     }
     
     private init(model: LOTComposition?, in bundle: Bundle?) {
@@ -103,7 +96,7 @@ open class MFWebLOTAnimationView: UIView, ZipToolDelegate{
         self.animationView = LOTAnimationView.init(json: json)
         setup()
     }
-   private init(name: String) {
+    private init(name: String) {
         super.init(frame: CGRect.zero)
         self.animationView = LOTAnimationView.init(name: name)
         setup()
@@ -170,17 +163,16 @@ open class MFWebLOTAnimationView: UIView, ZipToolDelegate{
     public func setName(name: String) {
         animationView?.setAnimation(named: name)
     }
-   
+    
     
     fileprivate var animationView: LOTAnimationView?
     
     
-    fileprivate lazy var zipTool:ZipTool = {
-        let tool = ZipTool()
+    fileprivate lazy var zipTool:MFZipManager = {
+        let tool = MFZipManager()
         tool.delegate = self
         return tool
     }()
-    
     
     deinit {
         #if debug
@@ -194,12 +186,22 @@ extension MFWebLOTAnimationView{
     ///解压完成
     func unZipSuccess(fileName: String) {
         MFCacheManager.shared.updateCacheInfo(fileName: fileName, md5: self.currentResourceMD5)
-        let path = MFCacheManager.shared.getCachePath(fileName: fileName)
-        self.updateLottieView(filePath: path)
+        let filePath = MFCacheManager.shared.getCachePath(fileName: fileName)
+        self.updateLottieViewFromHDD(filePath: filePath)
     }
     
-    /// 更新Lottie状态
-    func updateLottieView(filePath: String){
+    /// 从Bundle取出更新Lottie状态
+    func updateLottieViewFromBundle(fileName: String){
+        animationView = LOTAnimationView.init(name: fileName)
+        animationView?.loopAnimation = loopAnimation
+        animationView?.autoReverseAnimation = autoReverseAnimation
+        animationView?.animationSpeed = animationSpeed ?? 1.0
+        animationView?.play()
+        animationView?.removeFromSuperview()
+        addSubview(animationView ?? UIView())
+    }
+    /// 从硬盘取出更新Lottie状态
+    func updateLottieViewFromHDD(filePath: String){
         animationView = LOTAnimationView.init(filePath: filePath)
         animationView?.loopAnimation = loopAnimation
         animationView?.autoReverseAnimation = autoReverseAnimation
@@ -207,5 +209,30 @@ extension MFWebLOTAnimationView{
         animationView?.play()
         animationView?.removeFromSuperview()
         addSubview(animationView ?? UIView())
+    }
+    
+    ///刷新缓存操作
+    func refreshCachedOperation(fileName:String, mfWebLottieRefreshCached:Bool){
+        if mfWebLottieRefreshCached{
+            ///需要检查是否更新同url的内容
+            MFDownloadManager.shared.checkResourceIsUpdate(fileName: fileName) { (md5) in
+                self.currentResourceMD5 = md5
+                if !MFCacheManager.shared.isExistInCache(fileName: fileName, md5: md5){
+                    ///需要下载更新
+                    MFDownloadManager.shared.downloadResource(fileName: fileName, downloadFinishCallBack: {[weak self] in
+                        self?.zipTool.unZipFile(zipFileName: fileName)
+                    })
+                }else{
+                    ///在Bundle内
+                    if let _ = Bundle.main.path(forResource: fileName, ofType: "json"){
+                        self.updateLottieViewFromBundle(fileName: fileName)
+                        return
+                    }
+                    ///在硬盘内
+                    let filePath = MFCacheManager.shared.getCachePath(fileName: fileName)
+                    self.updateLottieViewFromHDD(filePath: filePath)
+                }
+            }
+        }
     }
 }
