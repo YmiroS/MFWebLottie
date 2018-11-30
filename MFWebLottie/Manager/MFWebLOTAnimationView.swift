@@ -11,7 +11,7 @@ import UIKit
 class MFWebLOTAnimationView: UIView, ZipToolDelegate{
    
     //MARK: - property
-    private var currentResourceMD5:String = ""
+    fileprivate var currentResourceMD5:String = ""
     
     ///是否支持相应点击事件
     public var isThrough: Bool = false
@@ -172,10 +172,10 @@ class MFWebLOTAnimationView: UIView, ZipToolDelegate{
     }
    
     
-    private var animationView: LOTAnimationView?
+    fileprivate var animationView: LOTAnimationView?
     
     
-    private lazy var zipTool:ZipTool = {
+    fileprivate lazy var zipTool:ZipTool = {
         let tool = ZipTool()
         tool.delegate = self
         return tool

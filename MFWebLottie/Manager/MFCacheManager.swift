@@ -24,7 +24,7 @@ class MFCacheManager: NSObject {
     }
     
     ///加载缓存信息
-    private func loadCacheInfo(){
+    fileprivate func loadCacheInfo(){
         guard let localInfo = NSDictionary.init(contentsOfFile: mfCacheInfoPath) as? [String: String] else{
             return
         }
@@ -119,7 +119,7 @@ class MFCacheManager: NSObject {
     }
     
     ///计算单个文件的大小
-    private func fileSize(filePath: String) -> UInt64 {
+    fileprivate func fileSize(filePath: String) -> UInt64 {
         let manager = FileManager.default
         if manager.fileExists(atPath: filePath) {
             do {

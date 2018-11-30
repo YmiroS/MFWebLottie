@@ -16,11 +16,11 @@ class MFDownloadManager: NSObject, URLSessionDownloadDelegate {
         return instance
     }()
     
-    private var basePath:String = ""
-    private var session:URLSession?
-    private var downloadProgressCallBack:((Int64, Int64) -> Void)?
-    private var downloadFinishCallBack:(() -> Void)?
-    private var failedCallBack:((String) -> Void)?
+    fileprivate var basePath:String = ""
+    fileprivate var session:URLSession?
+    fileprivate var downloadProgressCallBack:((Int64, Int64) -> Void)?
+    fileprivate var downloadFinishCallBack:(() -> Void)?
+    fileprivate var failedCallBack:((String) -> Void)?
     
     
     /// 设定基地址

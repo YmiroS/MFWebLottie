@@ -51,7 +51,7 @@ class ZipTool: NSObject, SSZipArchiveDelegate {
     /// 失败删除文件
     ///
     /// - Parameter path: 原始Zip文件路径
-    private func failedDeleteFile(path:String){
+    fileprivate func failedDeleteFile(path:String){
         do{
             try FileManager.default.removeItem(atPath: path)
         }
