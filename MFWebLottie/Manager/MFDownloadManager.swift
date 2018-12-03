@@ -27,7 +27,11 @@ class MFDownloadManager: NSObject, URLSessionDownloadDelegate {
     ///
     /// - Parameter basePath: 基地址
     public func setBasePath(_ basePath:String){
-        self.basePath = basePath
+        var tempPath = basePath
+        if basePath.last == "/"{
+            tempPath.remove(at: basePath.endIndex)
+        }
+        self.basePath = tempPath
     }
     
     

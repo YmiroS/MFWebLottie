@@ -13,19 +13,19 @@ open class MFWebLottieManager: NSObject {
     /// 配置基地址
     ///  例:https://a.b.c/c
     /// - Parameter path: 基地址
-    public func setBasePath(path:String){
+    public class func setBasePath(path:String){
         MFDownloadManager.shared.setBasePath(path)
     }
     
     /// 获取缓存大小
     ///
-    /// - Returns: 缓存大小
-    public func getCacheSize() -> CGFloat{
+    /// - Returns: 缓存大小(M)
+    public class func getCacheSize() -> CGFloat{
         return MFCacheManager.shared.getCacheSize()
     }
     
     /// 清除缓存
-    public func clearCache(){
+    public class func clearCache(){
         MFCacheManager.shared.clearCache()
     }
     

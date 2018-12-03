@@ -16,7 +16,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        MFDownloadManager.shared.setBasePath("https://koalareading-demo.oss-cn-beijing.aliyuncs.com/resource/static/lottie")
+        MFWebLottieManager.setBasePath(path: "https://koalareading-demo.oss-cn-beijing.aliyuncs.com/resource/static/lottie")
+
         return true
     }
     
